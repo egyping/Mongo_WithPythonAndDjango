@@ -1,0 +1,9 @@
+Mongo atlas 
+pythonarabia
+
+
+Mongo with python
+
+create venv 
+activate 
+
