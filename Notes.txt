@@ -4,6 +4,13 @@ pythonarabia
 
 Mongo with python
 
-create venv 
-activate 
+    create venv 
+    activate 
+    pip install pymongo 
+    pip install dnspython
 
+    get the DB URL from Atlas 
+
+    create > client, db and collection and try to run the file 
+
+    createMany function
