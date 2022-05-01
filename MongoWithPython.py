@@ -1,15 +1,18 @@
 import pymongo
 from urllib.parse import quote, quote_plus
+import certifi
+ca = certifi.where()
 
 mongo_uri = "mongodb+srv://shopuser:" + quote_plus("userpassword") + "@cluster0.tk0m2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
-print(mongo_uri)
 
-client = pymongo.MongoClient(mongo_uri)
+client = pymongo.MongoClient(f"mongodb+srv://shopuser:" + quote_plus("userpassword") + "@cluster0.tk0m2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", tlsCAFile=ca)
+
+
 
 documents = [
         {
-            "sku":"111445001",
+            "sku":"111445007",
             "title":"Simsong One mobile phone",
             "description":"The greatest Onedroid phone on the market .....",
             "weight":350,
@@ -20,7 +23,7 @@ documents = [
             "price":1000,
         },
         {
-            "sku":"111445002",
+            "sku":"111445008",
             "title":"Simsong One mobile phone",
             "description":"The greatest Onedroid phone on the market .....",
             "weight":350,
@@ -31,7 +34,7 @@ documents = [
             "price":1000,
         },
         {
-            "sku":"111445003",
+            "sku":"111445009",
             "title":"Simsong One mobile phone",
             "description":"The greatest Onedroid phone on the market .....",
             "weight":350,
@@ -59,16 +62,21 @@ def insertMany(client, documents):
     db = client["PythonDB"]
     collection = db["products"]
     do_insert = collection.insert_many(documents)
-    print(do_insert.inserted_ids)
+    # print(do_insert.inserted_ids)
 
 #insertMany(client,documents)
 
 
-def readDocuments(client, condition):
+def readDocs(client, condition):
     db = client["PythonDB"]
-    col = db["dummyCollection"]
-    results = col.find(condition)
-    # db.collectio.find({})
+    collection = db["products"]
+    results = collection.find(condition)
 
     for row in results:
         print(row)
+
+
+#readDocs(client,{"title": "Simsong One mobile phone"})
+#readDocs(client,{'sku': '111445008'})
+readDocs(client,{})  # SELECT * FROM products
+
