@@ -1,12 +1,9 @@
-Mongo atlas 
-pythonarabia
-
 
 Mongo with python
 
     create venv 
     activate 
-    pip install pymongo 
+    pip install pymongo==3.12.1
     pip install dnspython
     pip install certifi
     
@@ -17,3 +14,24 @@ Mongo with python
     createMany function
 
     red docs function 
+
+    update docs function 
+
+    delete docs function 
+
+
+Django with Mongo 
+    pip install djongo==1.3.6
+    pip install pymongo==3.12.1   # the new version 4 not supported djongo 
+    django-admin startproject project .
+    python manage.py startapp mongo
+    settings > installed apps 
+    Atlas >> new DB
+    mongo app >> models 
+    settings >> DB 
+    python manage.py migrate
+    python manage.py createsuperuser
+    app >> admin >> admin.site.register(model)
+    python manage.py runserver
+
+
